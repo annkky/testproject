@@ -1,7 +1,8 @@
 # Simple workflow for deploying static content to GitHub Pages
+
 name: Deploy to GitHub Pages
 
-# Ensure workflow has correct permissions for Pages
+
 permissions:
   contents: read
   pages: write
@@ -16,6 +17,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
